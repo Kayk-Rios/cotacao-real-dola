@@ -32,7 +32,61 @@ import { DailyExchangeData } from '../../services/exchange-rate.service';
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .history-section {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .history-toggle {
+      width: 100%;
+      padding: 20px;
+      background: white;
+      border: none;
+      border-bottom: 1px solid #e0e0e0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #2196f3;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .history-toggle:hover {
+      background: #f5f5f5;
+    }
+
+    .history-toggle:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .toggle-icon {
+      font-size: 24px;
+      font-weight: 300;
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-icon.expanded {
+      transform: rotate(180deg);
+    }
+
+    .history-content {
+      padding: 20px;
+      background: white;
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .loading-history {
+      text-align: center;
+      padding: 40px;
+      color: #666;
+    }
+  `]
 })
 export class HistorySectionComponent {
   @Input() mostrarHistorico = false;
