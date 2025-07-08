@@ -58,7 +58,61 @@ import { HistorySectionComponent } from './components/history-section/history-se
       <app-footer></app-footer>
     </div>
   `,
-  styles: []
+  styles: [`
+    .app-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #f5f5f5;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 32px 20px;
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #2196f3;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .result-section {
+      margin-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+      .main-content {
+        max-width: 600px;
+        padding: 48px 32px;
+      }
+
+      .title {
+        font-size: 36px;
+        margin-bottom: 48px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .main-content {
+        max-width: 1200px;
+        padding: 64px 48px;
+      }
+
+      .result-section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 32px;
+        align-items: start;
+      }
+    }
+  `]
 })
 export class App implements OnInit {
   codigoMoeda: string = '';
