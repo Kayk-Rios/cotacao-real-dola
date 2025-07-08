@@ -16,7 +16,45 @@ import { CurrentExchangeRate } from '../../services/exchange-rate.service';
       <div class="rate-value">R$ {{ taxaAtual.exchangeRate.toFixed(2) }}</div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .current-rate-card {
+      background: #e3f2fd;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .rate-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .rate-label {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .rate-pair {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2196f3;
+    }
+
+    .rate-date {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .rate-value {
+      font-size: 32px;
+      font-weight: 700;
+      color: #2196f3;
+    }
+  `]
 })
 export class CurrentRateCardComponent {
   @Input() taxaAtual: CurrentExchangeRate | null = null;
