@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="input-section">
       <div class="input-group">
-        <label for="currency-input">Entre com o código da moeda</label>
+        <label for="currency-input">Enter the currency code</label>
         <input
           id="currency-input"
           type="text"
@@ -27,7 +27,7 @@ import { FormsModule } from '@angular/forms';
         (click)="aoEnviar()"
         [disabled]="carregando || !codigoMoeda"
       >
-        {{ carregando ? 'CARREGANDO...' : 'RESULTADO DO CÂMBIO' }}
+        {{ carregando ? 'LOADING...' : 'EXCHANGE RESULT' }}
       </button>
     </div>
   `,
