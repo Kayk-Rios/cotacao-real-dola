@@ -100,3 +100,11 @@ Projeto licenciado sob a **MIT**. Veja [LICENSE](LICENSE).
 ---
 
 ---
+
+
+![Captura de tela de 2025-07-08 18-38-13](https://github.com/user-attachments/assets/88866c9f-28bd-4f42-8dfc-c4bcc05720e6)
+![Captura de tela de 2025-07-08 18-38-00](https://github.com/user-attachments/assets/cd5662b7-ff09-4527-9db0-8e2d5a925617)
+![Captura de tela de 2025-07-08 18-37-43](https://github.com/user-attachments/assets/363ccef6-1ff6-4b76-a835-55381fcbfdf7)
+![Captura de tela de 2025-07-08 18-37-17](https://github.com/user-attachments/assets/24f46dad-948f-4609-86aa-08f4196c29be)
+![Captura de tela de 2025-07-08 18-37-07](https://github.com/user-attachments/assets/88d20c78-830d-49d1-a4d0-f48ba60ce481)
+![Captura de tela de 2025-07-08 18-36-55](https://github.com/user-attachments/assets/57edf6f2-a596-4c13-9cbd-7e973aff9d9a)
