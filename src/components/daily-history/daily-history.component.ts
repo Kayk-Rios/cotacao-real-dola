@@ -49,7 +49,119 @@ export interface DadosDiariosComDiferenca extends DailyExchangeData {
       </div>
     </div>
   `,
-  styles: []
+  styles: [`
+    .daily-history {
+      margin-top: 20px;
+    }
+
+    .daily-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .daily-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid #e9ecef;
+    }
+
+    .card-header {
+      margin-bottom: 12px;
+    }
+
+    .date {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2196f3;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .rate-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .rate-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #6c757d;
+      font-weight: 600;
+    }
+
+    .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #212529;
+    }
+
+    .close-diff {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid #dee2e6;
+    }
+
+    .close-diff .value {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .positive {
+      color: #28a745;
+    }
+
+    .negative {
+      color: #dc3545;
+    }
+
+    .arrow {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 4px;
+    }
+
+    .arrow.up {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-bottom: 6px solid #28a745;
+    }
+
+    .arrow.down {
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid #dc3545;
+    }
+
+    @media (min-width: 768px) {
+      .daily-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .daily-cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  `]
 })
 export class DailyHistoryComponent implements OnInit, OnChanges {
   @Input() dadosDiarios: DailyExchangeData[] = [];
@@ -82,7 +194,7 @@ export class DailyHistoryComponent implements OnInit, OnChanges {
       }
       
       return resultado;
-    }).reverse();
+    }).reverse(); 
   }
 
   formatarData(stringData: string): string {
