@@ -9,13 +9,13 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="input-section">
       <div class="input-group">
-        <label for="currency-input">Enter the currency code</label>
+        <label for="currency-input"></label>
         <input
           id="currency-input"
           type="text"
           [(ngModel)]="codigoMoeda"
           (ngModelChange)="aoMudarMoeda($event)"
-          placeholder="USD"
+          placeholder="Enter the currency code"
           (keyup.enter)="aoEnviar()"
           [disabled]="carregando"
           class="currency-input"
