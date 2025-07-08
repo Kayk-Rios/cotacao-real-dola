@@ -9,7 +9,13 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="input-section">
       <div class="input-group">
-        <label for="currency-input"></label>
+        <label 
+          for="currency-input"
+          [class.visible]="showLabel"
+          class="input-label"
+        >
+          Enter the currency code
+        </label>
         <input
           id="currency-input"
           type="text"
@@ -17,6 +23,8 @@ import { FormsModule } from '@angular/forms';
           (ngModelChange)="aoMudarMoeda($event)"
           placeholder="Enter the currency code"
           (keyup.enter)="aoEnviar()"
+          (focus)="showLabel = true"
+          (blur)="onBlur()"
           [disabled]="carregando"
           class="currency-input"
         />
@@ -38,13 +46,25 @@ import { FormsModule } from '@angular/forms';
 
     .input-group {
       margin-bottom: 20px;
+      position: relative;
     }
 
-    .input-group label {
-      display: block;
+    .input-label {
+      position: absolute;
+      top: -20px;
+      left: 10px;
       font-size: 14px;
       color: #666;
-      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      padding: 0 5px;
+      pointer-events: none;
+    }
+
+    .input-label.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .currency-input {
@@ -96,9 +116,20 @@ export class CurrencyInputComponent {
   @Output() codigoMoedaChange = new EventEmitter<string>();
   @Output() enviar = new EventEmitter<void>();
 
+  showLabel = false;
+
   aoMudarMoeda(valor: string) {
     this.codigoMoeda = valor;
     this.codigoMoedaChange.emit(valor);
+    if (valor) {
+      this.showLabel = true;
+    }
+  }
+
+  onBlur() {
+    if (!this.codigoMoeda) {
+      this.showLabel = false;
+    }
   }
 
   aoEnviar() {

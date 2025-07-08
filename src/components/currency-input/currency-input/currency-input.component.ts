@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-currency-input',
@@ -9,7 +10,13 @@ import { FormsModule } from '@angular/forms';
   template: `
     <div class="input-section">
       <div class="input-group">
-        <label for="currency-input"></label>
+        <label 
+          for="currency-input"
+          [@labelAnimation]="getAnimationState()"
+          class="input-label"
+        >
+          Enter the currency code
+        </label>
         <input
           id="currency-input"
           type="text"
@@ -17,6 +24,8 @@ import { FormsModule } from '@angular/forms';
           (ngModelChange)="aoMudarMoeda($event)"
           placeholder="Enter the currency code"
           (keyup.enter)="aoEnviar()"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
           [disabled]="carregando"
           class="currency-input"
         />
@@ -38,13 +47,18 @@ import { FormsModule } from '@angular/forms';
 
     .input-group {
       margin-bottom: 20px;
+      position: relative;
     }
 
-    .input-group label {
-      display: block;
+    .input-label {
+      position: absolute;
+      top: -20px;
+      left: 10px;
       font-size: 14px;
       color: #666;
-      margin-bottom: 8px;
+      padding: 0 5px;
+      pointer-events: none;
+      transform-origin: left center;
     }
 
     .currency-input {
@@ -88,13 +102,48 @@ import { FormsModule } from '@angular/forms';
       background: #ccc;
       cursor: not-allowed;
     }
-  `]
+  `],
+  animations: [
+    trigger('labelAnimation', [
+      state('void', style({
+        opacity: 0,
+        transform: 'translateY(20px) scale(0.9)'
+      })),
+      state('visible', style({
+        opacity: 1,
+        transform: 'translateY(0) scale(1)'
+      })),
+      transition('void <=> visible', [
+        animate('300ms cubic-bezier(0.4, 0, 0.2, 1)')
+      ]),
+      transition(':leave', [
+        animate('200ms ease-out', style({
+          opacity: 0,
+          transform: 'translateY(10px) scale(0.95)'
+        }))
+      ])
+    ])
+  ]
 })
 export class CurrencyInputComponent {
   @Input() carregando = false;
   @Input() codigoMoeda = '';
   @Output() codigoMoedaChange = new EventEmitter<string>();
   @Output() enviar = new EventEmitter<void>();
+
+  isFocused = false;
+
+  getAnimationState() {
+    return this.isFocused || this.codigoMoeda ? 'visible' : 'void';
+  }
+
+  onFocus() {
+    this.isFocused = true;
+  }
+
+  onBlur() {
+    this.isFocused = false;
+  }
 
   aoMudarMoeda(valor: string) {
     this.codigoMoeda = valor;
