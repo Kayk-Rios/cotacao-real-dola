@@ -12,42 +12,43 @@ export interface DadosDiariosComDiferenca extends DailyExchangeData {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="daily-history">
-      <div class="daily-cards">
-        <div class="daily-card" *ngFor="let dia of dadosDiariosComDiferenca">
-          <div class="card-header">
-            <span class="date">{{ formatarData(dia.date) }}</span>
+   <div class="daily-history">
+  <div class="daily-cards">
+    <div class="daily-card" *ngFor="let dia of dadosDiariosComDiferenca">
+      <div class="card-header">
+        <span class="date">{{ formatarData(dia.date) }}</span>
+      </div>
+      <div class="card-content">
+        <div class="rate-info">
+          <div class="rate-item">
+            <span class="label">OPEN:</span>
+            <span class="value"><span class="currency">R$</span> {{ dia.open.toFixed(4) }}</span>
           </div>
-          <div class="card-content">
-            <div class="rate-info">
-              <div class="rate-item">
-                <span class="label">OPEN:</span>
-                <span class="value">R$ {{ dia.open.toFixed(4) }}</span>
-              </div>
-              <div class="rate-item">
-                <span class="label">HIGH:</span>
-                <span class="value">R$ {{ dia.high.toFixed(4) }}</span>
-              </div>
-              <div class="rate-item">
-                <span class="label">CLOSE:</span>
-                <span class="value">R$ {{ dia.close.toFixed(4) }}</span>
-              </div>
-              <div class="rate-item">
-                <span class="label">LOW:</span>
-                <span class="value">R$ {{ dia.low.toFixed(4) }}</span>
-              </div>
-            </div>
-            <div class="close-diff" *ngIf="dia.diferencaFechamento !== undefined">
-              <span class="label">CLOSE DIFF (%): (%):</span>
-              <span class="value" [ngClass]="dia.percentualDiferencaFechamento! >= 0 ? 'positive' : 'negative'">
-                {{ dia.percentualDiferencaFechamento! >= 0 ? '+' : '' }}{{ dia.percentualDiferencaFechamento!.toFixed(2) }}%
-                <i class="arrow" [ngClass]="dia.percentualDiferencaFechamento! >= 0 ? 'up' : 'down'"></i>
-              </span>
-            </div>
+          <div class="rate-item">
+            <span class="label">HIGH:</span>
+            <span class="value"><span class="currency">R$</span> {{ dia.high.toFixed(4) }}</span>
           </div>
+          <div class="rate-item">
+            <span class="label">CLOSE:</span>
+            <span class="value"><span class="currency">R$</span> {{ dia.close.toFixed(4) }}</span>
+          </div>
+          <div class="rate-item">
+            <span class="label">LOW:</span>
+            <span class="value"><span class="currency">R$</span> {{ dia.low.toFixed(4) }}</span>
+          </div>
+        </div>
+        <div class="close-diff" *ngIf="dia.diferencaFechamento !== undefined">
+          <span class="label">CLOSE DIFF (%):</span>
+          <span class="value" [ngClass]="dia.percentualDiferencaFechamento! >= 0 ? 'positive' : 'negative'">
+            {{ dia.percentualDiferencaFechamento! >= 0 ? '+' : '' }}{{ dia.percentualDiferencaFechamento!.toFixed(2) }}%
+            <i class="arrow" [ngClass]="dia.percentualDiferencaFechamento! >= 0 ? 'up' : 'down'"></i>
+          </span>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
   `,
   styles: [`
     .daily-history {
@@ -101,11 +102,20 @@ export interface DadosDiariosComDiferenca extends DailyExchangeData {
       font-weight: 600;
     }
 
+   
     .value {
-      font-size: 14px;
-      font-weight: 600;
-      color: #212529;
-    }
+  font-size: 14px;
+  font-weight: 600;
+  color: #212529;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.currency {
+  font-size: 14px;
+}
 
     .close-diff {
       display: flex;
