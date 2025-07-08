@@ -4,7 +4,7 @@
 
 # 💱 BRL Exchange Rate - Action Labs
 
-Link SIte no ar: https://cotacao-real.netlify.app/ 
+Link Site no ar: https://cotacao-real.netlify.app/ 
 
 Aplicação Angular moderna para consultar a cotação atual e histórica do Real Brasileiro (BRL) frente a moedas internacionais.
 
