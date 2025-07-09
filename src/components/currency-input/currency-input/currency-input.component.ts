@@ -77,7 +77,6 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
     }
 
     .currency-input:disabled {
-      background: #f5f5f5;
       cursor: not-allowed;
     }
 
@@ -87,7 +86,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
       background: #2196f3;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;

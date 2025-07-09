@@ -83,17 +83,16 @@ import { FormsModule } from '@angular/forms';
     }
 
     .currency-input:disabled {
-      background: #f5f5f5;
       cursor: not-allowed;
     }
 
     .exchange-button {
       width: 100%;
       padding: 16px;
-      background: #2196f3;
+      background: #2196f3!important;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 50px;
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
