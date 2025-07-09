@@ -6,6 +6,10 @@
 
 Link Site no ar: https://cotacao-real.netlify.app/ 
 
+<div style="background-color:rgb(25, 24, 22); border-left: 4px solidrgb(174, 140, 89); padding: 12px; margin: 12px 0; border-radius: 4px;">
+⚠️ <strong>Foi identificado que a API está retornando datas no formato UTC, o que pode causar uma diferença de 1 dia na exibição, dependendo do fuso horário do usuário.
+</div>
+
 Aplicação Angular moderna para consultar a cotação atual e histórica do Real Brasileiro (BRL) frente a moedas internacionais.
 
 ![Angular](https://img.shields.io/badge/Angular-20.0.0-red?style=flat-square\&logo=angular)
